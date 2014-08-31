@@ -2,3 +2,4 @@ dwm config files
 newsbeuter config
 x
 xdg-open
+etc
