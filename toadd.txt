@@ -1,5 +1,6 @@
-dwm config files
+xmonad.hs
+xsession
+xinit
 newsbeuter config
-x
 xdg-open
 etc
