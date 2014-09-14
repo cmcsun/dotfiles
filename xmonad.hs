@@ -1,5 +1,3 @@
--- default desktop configuration for Fedora
-
 import System.Posix.Env (getEnv)
 import Data.Maybe (maybe)
 import XMonad
@@ -11,15 +9,16 @@ import XMonad.Layout.NoBorders
 
 normalBorderColor = "#000000"
 focusedBorderColor = "#000000"
-myTerminal = "terminator"
-terminal = "terminator"
 
 myLayoutHook = noBorders Full
 
-main = xmonad $ defaultConfig { layoutHook = myLayoutHook }
+main = xmonad defaultConfig
+        {   terminal = "terminator",
+            layoutHook = myLayoutHook
+        }
 
 desktop "gnome" = gnomeConfig
 desktop "kde" = kde4Config
-desktop "xfce" = xfceConfig
+desktop "xfce" = xfceConfig  
 desktop "xmonad-mate" = gnomeConfig
 desktop _ = desktopConfig
