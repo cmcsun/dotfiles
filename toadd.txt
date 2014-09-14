@@ -1,3 +1,4 @@
 newsbeuter config
 xdg-open
-etc
+Xsession
+xdefaults
