@@ -11,4 +11,3 @@ set softtabstop=4
 set ignorecase
 syntax on
 syntax enable
-colorscheme monokai
