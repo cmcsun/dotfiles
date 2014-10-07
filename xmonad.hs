@@ -10,9 +10,8 @@ focusedBorderColor = "#000000"
 myLayoutHook = noBorders Full
 
 main = xmonad defaultConfig
-        {   terminal = "terminator",
-            layoutHook = myLayoutHook
-        }
-        
-desktop "xmonad-mate" = gnomeConfig
+    {
+        terminal = "terminator",
+        layoutHook = myLayoutHook
+    }
 desktop _ = desktopConfig
