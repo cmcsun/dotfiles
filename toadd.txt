@@ -1,4 +1,0 @@
-newsbeuter config
-xdg-open
-Xsession
-xdefaults
