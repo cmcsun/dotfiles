@@ -26,6 +26,7 @@ if [ -z ${DISPLAY:=""} ]; then
        DISPLAY=${XSERVER}:0.0     # Display on remote host.
     fi
 fi
+
 export DISPLAY
 alias debug="set -o nounset; set -o xtrace"
 ulimit -S -c 0      # Don't want coredumps.
@@ -148,12 +149,8 @@ On_IBlue='\e[0;104m'    # Blue
 On_IPurple='\e[0;105m'  # Purple
 On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White
-#no more colours.. OHHH... *sad face*
-
 
 ALERT=${BWhite}${On_Red} # Bold White on red background
-
-
 
 echo -e "${BCyan}This is BASH ${BRed}${BASH_VERSION%.*}${BCyan}\
 - DISPLAY on ${BRed}$DISPLAY${NC}\n"
@@ -164,45 +161,9 @@ fi
 
 function _exit()              # Function to run upon exit of shell.
 {
-    echo -e "${BRed}Hasta la vista, baby${NC}"
+    echo -e "${BRed}Hasta la vista, baby.${NC}"
 }
 trap _exit EXIT
-
-#-------------------------------------------------------------
-# Shell Prompt - for many examples, see:
-#       http://www.debian-administration.org/articles/205
-#       http://www.askapache.com/linux/bash-power-prompt.html
-#       http://tldp.org/HOWTO/Bash-Prompt-HOWTO
-#       https://github.com/nojhan/liquidprompt
-#-------------------------------------------------------------
-# Current Format: [TIME USER@HOST PWD] >
-# TIME:
-#    Green     == machine load is low
-#    Orange    == machine load is medium
-#    Red       == machine load is high
-#    ALERT     == machine load is very high
-# USER:
-#    Cyan      == normal user
-#    Orange    == SU to user
-#    Red       == root
-# HOST:
-#    Cyan      == local session
-#    Green     == secured remote connection (via ssh)
-#    Red       == unsecured remote connection
-# PWD:
-#    Green     == more than 10% free disk space
-#    Orange    == less than 10% free disk space
-#    ALERT     == less than 5% free disk space
-#    Red       == current user does not have write privileges
-#    Cyan      == current filesystem is size zero (like /proc)
-# >:
-#    White     == no background or suspended jobs in this shell
-#    Cyan      == at least one background job in this shell
-#    Orange    == at least one suspended job in this shell
-#
-#    Command is added to the history file each time you hit enter,
-#    so it's available to all shells (using 'history -a').
-
 
 # Test connection type:
 if [ -n "${SSH_CONNECTION}" ]; then
@@ -221,8 +182,6 @@ elif [[ ${USER} != $(logname) ]]; then
 else
     SU=${BCyan}         # User is normal (well ... most of us are).
 fi
-
-
 
 NCPU=$(grep -c 'processor' /proc/cpuinfo)    # Number of CPUs
 SLOAD=$(( 100*${NCPU} ))        # Small load
@@ -312,28 +271,11 @@ case ${TERM} in
         ;;
 esac
 
-
-
 export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
 export HISTIGNORE="&:bg:fg:ll:h"
 export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
 export HISTCONTROL=ignoredups
 export HOSTFILE=$HOME/.hosts    # Put a list of remote hosts in ~/.hosts
-
-
-#============================================================
-#
-#  ALIASES AND FUNCTIONS
-#
-#  Arguably, some functions defined here are quite big.
-#  If you want to make this file smaller, these functions can
-#+ be converted into scripts and removed from here.
-#
-#============================================================
-
-#-------------------
-# Personnal Aliases
-#-------------------
 
 alias rm='rm -i'
 alias cp='cp -i'
@@ -349,7 +291,6 @@ alias ..='cd ..'
 # Pretty-print of some PATH variables:
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
-
 
 alias du='du -kh'    # Makes a more readable output.
 alias df='df -kTh'
@@ -372,7 +313,6 @@ alias lr='ll -R'           #  Recursive ls.
 alias la='ll -A'           #  Show hidden files.
 alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 
-
 #-------------------------------------------------------------
 # Tailoring 'less'
 #-------------------------------------------------------------
@@ -393,7 +333,6 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
-
 
 #-------------------------------------------------------------
 # Spelling typos - highly personnal and keyboard-dependent :-)
@@ -450,7 +389,6 @@ function te()  # wrapper around xemacs/gnuserv
 }
 
 function soffice() { command soffice "$@" & }
-function firefox() { command firefox "$@" & }
 function xpdf() { command xpdf "$@" & }
 
 
@@ -526,7 +464,6 @@ function extract()      # Handy Extract Program
         echo "'$1' is not a valid file!"
     fi
 }
-
 
 # Creates an archive (*.tar.gz) from given directory.
 function maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
@@ -641,8 +578,6 @@ function corename()   # Get name of app that created a corefile.
     done
 }
 
-
-
 #=========================================================================
 #
 #  PROGRAMMABLE COMPLETION SECTION
@@ -720,7 +655,6 @@ QT|wmv|mp3|MP3|ogg|OGG|ogm|OGM|mp4|MP4|wav|WAV|asx|ASX)' xine
 
 
 complete -f -o default -X '!*.pl'  perl perl5
-
 
 #  This is a 'universal' completion function - it works when commands have
 #+ a so-called 'long options' mode , ie: 'ls --all' instead of 'ls -a'
@@ -912,7 +846,8 @@ _killall()
 
 complete -F _killall killall killps
 
-
+export EDITOR="vim"
+export BROWSER="firefox"
 
 # Local Variables:
 # mode:shell-script
