@@ -11,7 +11,6 @@ filetype on
 filetype plugin on
 set autoindent
 
-set cursorline
 set expandtab
 set smarttab
 set incsearch
