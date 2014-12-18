@@ -1,3 +1,4 @@
+" Methos's .vimrc
 " allows cursor change in tmux mode
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -7,6 +8,8 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
+colorscheme molokai
+set background=dark
 filetype on
 filetype plugin on
 set autoindent
@@ -20,6 +23,9 @@ set hlsearch
 set ignorecase smartcase    " make searches case-sensitive only if they
 set shiftwidth=4
 set softtabstop=4
+set bs=2
+set encoding=utf8
+set ffs=unix,dos,mac
 
 set ignorecase
 syntax on
@@ -52,3 +58,5 @@ endfunction
 " column border highlighting, turned off for now
  highlight ColorColumn ctermbg=0
 " execute "set colorcolumn=" . join(range(81,335), ',')
+
+
