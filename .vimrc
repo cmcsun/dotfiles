@@ -1,5 +1,6 @@
 " Methos's .vimrc
 " allows cursor change in tmux mode
+" ./configure  --enable-pythoninterp  --enable-rubyinterp --enable-gui=no --without-x --enable-cscope --enable-multibyte --prefix=/usr
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
