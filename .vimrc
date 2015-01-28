@@ -1,21 +1,6 @@
 " Methos's .vimrc
-" allows cursor change in tmux mode
-" ./configure  --enable-pythoninterp  --enable-rubyinterp --enable-gui=no --without-x --enable-cscope --enable-multibyte --prefix=/usr
 
 set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" vundle plugins
-Plugin 'gmarik/Vundle.vim'
-" Plugin 'Valloric/YouCompleteMe'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
 
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
