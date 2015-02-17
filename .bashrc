@@ -1,4 +1,4 @@
-cowsay -s "im stoned lol"
+ponysay -f tom "IM STONED"
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -160,9 +160,6 @@ ALERT=${BWhite}${On_Red} # Bold White on red background
 echo -e "${BCyan}This is BASH ${BRed}${BASH_VERSION%.*}${BCyan}\
 - DISPLAY on ${BRed}$DISPLAY${NC}\n"
 date
-if [ -x /usr/games/fortune ]; then
-    /usr/games/fortune -s     # Makes our day a bit more fun.... :-)
-fi
 
 function _exit()              # Function to run upon exit of shell.
 {
