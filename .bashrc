@@ -1,4 +1,4 @@
-ponysay -f tom "IM STONED"
+ponysay -f tom "I WANNA ROCK"
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
