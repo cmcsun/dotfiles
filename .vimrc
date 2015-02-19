@@ -1,5 +1,12 @@
 " Methos's .vimrc
-
+"if has(‘unix’)
+"set rtp+=~/.vim/bundle/Vundle.vim/
+"call vundle#begin()
+"elseif has(‘win32')
+"set rtp+=~/vimfiles/bundle/Vundle.vim/
+"let path=’~/vimfiles/bundle’
+"call vundle#begin(path)
+"endif
 set nocompatible              " be iMproved, required
 
 if exists('$TMUX')
