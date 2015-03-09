@@ -1,10 +1,11 @@
 " Methos's .vimrc
 set nocompatible              " be iMproved, required
 filetype off                  " required
+" vundle + plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'gmarik/Vundle.vim' "vundle itself
+Plugin 'Valloric/YouCompleteMe' "autocomplete
 call vundle#end()            " required
 filetype plugin indent on    " required
 
