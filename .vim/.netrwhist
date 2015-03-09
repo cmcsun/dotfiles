@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/methos/.newsbeuter'
-let g:netrw_dirhist_2='/home/methos/stuff/Systems/GNU+Linux'
-let g:netrw_dirhist_3='/home/methos/csc430/csc430project2/WindowsFormsApplication1'
-let g:netrw_dirhist_4='/home/methos/csc126/lab1b'
-let g:netrw_dirhist_5='/home/methos/stuff/Systems/GNU+Linux'
-let g:netrw_dirhist_6='/home/methos/InfectC/src'
-let g:netrw_dirhist_7='/home/methos/.vim'
