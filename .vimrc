@@ -1,12 +1,5 @@
 " Methos's .vimrc
-"if has(‘unix’)
-"set rtp+=~/.vim/bundle/Vundle.vim/
-"call vundle#begin()
-"elseif has(‘win32')
-"set rtp+=~/vimfiles/bundle/Vundle.vim/
-"let path=’~/vimfiles/bundle’
-"call vundle#begin(path)
-"endif
+
 set nocompatible              " be iMproved, required
 
 if exists('$TMUX')
@@ -16,7 +9,6 @@ else
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
-
 set background=dark
 filetype on
 filetype plugin on
@@ -63,8 +55,10 @@ function Edithex()
     endif
 endfunction
 
-
-
 " column border highlighting, turned off for now
  highlight ColorColumn ctermbg=0
 " execute "set colorcolumn=" . join(range(81,335), ',')
+
+filetype plugin on
+au FileType c setl ofu=ccomplete#CompleteCpp
+
