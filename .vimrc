@@ -1,6 +1,12 @@
 " Methos's .vimrc
-
 set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -10,7 +16,6 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 set background=dark
-filetype on
 filetype plugin on
 set autoindent
 set clipboard=unnamed       " use system clipboard
