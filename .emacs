@@ -29,3 +29,4 @@
 (define-key c++-mode-map (kbd "C-S-<return>") 'ac-complete-clang)
 ;; replace C-S-<return> with a key binding that you want
 (setq mf--source-file-extension "cpp")
+(global-set-key "\M-`" 'other-frame)
