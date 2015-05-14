@@ -31,7 +31,6 @@
 (setq mf--source-file-extension "cpp")
 (require 'framemove)
 (require 'win-switch)
-(require 'sr-speedbar)
 (setq speedbar-use-images nil)
 ;(require 'cmake-project)
 (global-set-key (kbd "C-x P") 'previous-multiframe-window)
