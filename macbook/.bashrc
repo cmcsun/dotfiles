@@ -25,3 +25,4 @@ alias du='du -kh'    # Makes a more readable output.
 alias df='df -kTh'
 alias dakota="echo woof woof woof woof woof woof woof woof! woof! *wags tail*"
 
+# add PATH variables for Android here later
