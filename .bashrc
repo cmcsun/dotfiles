@@ -913,7 +913,9 @@ _killall()
 complete -F _killall killall killps
 
 alias dakota="echo woof woof woof woof woof woof woof woof! woof! *wags tail*"
-
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # Local Variables:
 # mode:shell-script
 # sh-shell:bash
