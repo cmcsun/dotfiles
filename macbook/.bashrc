@@ -24,5 +24,7 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 alias du='du -kh'    # Makes a more readable output.
 alias df='df -kTh'
 alias dakota="echo woof woof woof woof woof woof woof woof! woof! *wags tail*"
-
-# add PATH variables for Android here later
+export ANDROID_SDK="/Users/raina/Library/Android/sdk"
+export ANDROID_HOME="/Users/raina/Library/Android/sdk"
+export ANDROID_NDK="/Users/raina/Documents/android-ndk-r10e"
+export PATH="$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools:$ANDROID_NDK"
