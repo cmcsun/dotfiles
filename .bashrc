@@ -916,6 +916,7 @@ complete -F _killall killall killps
 alias dakota="echo woof woof woof woof woof woof woof woof! woof! *wags tail*"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 # Local Variables:
 # mode:shell-script
 # sh-shell:bash
