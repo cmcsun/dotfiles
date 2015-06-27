@@ -5,7 +5,8 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim' "vundle itself
-Plugin 'Valloric/YouCompleteMe' "autocomplete
+Bundle 'https://github.com/emgram769/vim-multiuser'
+" Plugin 'Valloric/YouCompleteMe' "autocomplete
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -50,7 +51,16 @@ nmap <silent> <F8> :call Edithex()<CR>
 nmap <silent> <F9> :set nobinary<CR>:set eol<CR>
 
 function Edithex()
-    set binary
+
+" new stuff for tabs:
+nnoremap <C-t> :tabnew<CR>
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+
+set tabpagemax=20
+set showtabline=2
+
+set binary
     set noeol
     if $hex_input == 1
         :%!xxd -r
