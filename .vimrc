@@ -6,7 +6,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim' "vundle itself
 Bundle 'https://github.com/emgram769/vim-multiuser'
-" Plugin 'Valloric/YouCompleteMe' "autocomplete
+Plugin 'Valloric/YouCompleteMe' "autocomplete
 call vundle#end()            " required
 filetype plugin indent on    " required
 
