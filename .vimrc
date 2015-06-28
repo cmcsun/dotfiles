@@ -64,7 +64,47 @@ endfunction
 
 " Tabs
 nnoremap <C-t> :tabnew<CR>
-" nnoremap <C-Left> : tabprevious
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
+
+
+"====[ Make tabs, trailing whitespace, and non-breaking spaces visible ]======
+
+    exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+    set list
+
+
+"====[ Swap : and ; to make colon commands easier to type ]======
+
+    nnoremap  ;  :
+    nnoremap  :  ;
+
+
+"====[ Swap v and CTRL-V, because Block mode is more useful that Visual mode "]======
+
+    nnoremap    v   <C-V>
+    nnoremap <C-V>     v
+
+    vnoremap    v   <C-V>
+    vnoremap <C-V>     v
+
+
+"====[ Always turn on syntax highlighting for diffs ]=========================
+
+    " EITHER select by the file-suffix directly...
+    augroup PatchDiffHighlight
+        autocmd!
+        autocmd BufEnter  *.patch,*.rej,*.diff   syntax enable
+    augroup END
+
+    " OR ELSE use the filetype mechanism to select automatically...
+    filetype on
+    augroup PatchDiffHighlight
+        autocmd!
+        autocmd FileType  diff   syntax enable
+    augroup EN
 
 " column border highlighting, turned off for now
  highlight ColorColumn ctermbg=0
