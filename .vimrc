@@ -51,11 +51,6 @@ nmap <silent> <F9> :set nobinary<CR>:set eol<CR>
 
 function Edithex()
 
-" new stuff for tabs:
-nnoremap <C-t> :tabnew<CR>
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-
 set tabpagemax=20
 set showtabline=2
 
