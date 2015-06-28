@@ -20,6 +20,7 @@ endif
 set background=dark
 filetype plugin on
 set autoindent
+set cindent
 set clipboard=unnamed       " use system clipboard
 set pastetoggle=<F2>        " paste mode
 set expandtab
@@ -27,12 +28,17 @@ set smarttab
 set tabstop=4
 set incsearch
 set hlsearch
-set ignorecase smartcase    " make searches case-sensitive only if they
+set ignorecase smartcase    " make searches case-sensitive only if they got a cap in them
 set shiftwidth=4
 set softtabstop=4
 set bs=2
 set encoding=utf8
 set ffs=unix,dos,mac
+set mouse=a
+
+map <F5> :make
+map <F6> :copen
+map <F7> :cclose
 
 set ignorecase
 syntax on
