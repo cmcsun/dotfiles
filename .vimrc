@@ -1,6 +1,8 @@
 " Methos's .vimrc
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
+
 " vundle + plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -17,6 +19,8 @@ else
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+
+" most important stuff here
 set background=dark
 filetype plugin on
 set autoindent
@@ -36,15 +40,17 @@ set encoding=utf8
 set ffs=unix,dos,mac
 set mouse=a
 
+" wip
 map <F5> :make
 map <F6> :copen
 map <F7> :cclose
 
+" must haves
 set ignorecase
 syntax on
 syntax enable
 
-" show line numbers when i press f4
+" show line numbers when i press f4 (this works in any mode)
 highlight LineNr ctermbg=0 ctermfg=5
 nmap <silent> <F4> :set invnumber<CR>
 imap <silent> <F4> <ESC>:set invnumber<CR>i
@@ -75,54 +81,34 @@ nnoremap <C-Right> :tabnext<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
-"====[ Make the 81st column stand out ]====================
-
-    " EITHER the entire 81st column, full-screen...
-    highlight ColorColumn ctermbg=magenta
-    set colorcolumn=81
+" Make 81st colum stand out for if line is too long (usually never see this
+" cuz i split screen a lot with tmux but if i was coding full screen this will
+" show up sometimes
 
     " OR ELSE just the 81st column of wide lines...
     highlight ColorColumn ctermbg=magenta
     call matchadd('ColorColumn', '\%81v', 100)
 
-    " OR ELSE on April Fools day...
-    highlight ColorColumn ctermbg=red ctermfg=blue
-    exec 'set colorcolumn=' . join(range(2,80,3), ',')
 
-
-"=====[ Highlight matches when jumping to next ]=============
+" Highlight matches when jumping to next
 
     " This rewires n and N to do the highlighing...
     nnoremap <silent> n   n:call HLNext(0.4)<cr>
     nnoremap <silent> N   N:call HLNext(0.4)<cr>
 
 
-    
-    "highlight the match in red...makes a blink
-    function! HLNext (blinktime)
-        let [bufnum, lnum, col, off] = getpos('.')
-        let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
-        let target_pat = '\c\%#\%('.@/.'\)'
-        let ring = matchadd('WhiteOnRed', target_pat, 101)
-        redraw
-        exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-        call matchdelete(ring)
-        redraw
-    endfunctio
-
-"====[ Make tabs, trailing whitespace, and non-breaking spaces visible ]======
+" Make tabs, trailing whitespace, and non-breaking spaces visible
 
     exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
     set list
 
 
-"====[ Swap : and ; to make colon commands easier to type ]======
+" make ; and : do the same thing
 
     nnoremap  ;  :
-    nnoremap  :  ;
 
 
-"====[ Swap v and CTRL-V, because Block mode is more useful that Visual mode "]======
+" block mode is more useful than visual mode
 
     nnoremap    v   <C-V>
     nnoremap <C-V>     v
@@ -131,20 +117,13 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
     vnoremap <C-V>     v
 
 
-"====[ Always turn on syntax highlighting for diffs ]=========================
-
+" Always turn on syntax highlighting for diffs
+" this is neat for a few different reasons
     " EITHER select by the file-suffix directly...
     augroup PatchDiffHighlight
         autocmd!
         autocmd BufEnter  *.patch,*.rej,*.diff   syntax enable
     augroup END
-
-    " OR ELSE use the filetype mechanism to select automatically...
-    filetype on
-    augroup PatchDiffHighlight
-        autocmd!
-        autocmd FileType  diff   syntax enable
-    augroup EN
 
 " column border highlighting, turned off for now
  highlight ColorColumn ctermbg=0
