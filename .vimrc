@@ -1,9 +1,18 @@
-" Methos's .vimrc
+" My .vimrc
 
+" mad important stuff that vundle needs  
 set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype off                  " required 
 
-" vundle + plugins
+" non-vundle plugins in .vim/plugins; this is seriously the best thing ever
+" squee
+runtime plugin/dragvisuals.vim
+vmap <expr> h   DVB_Drag('left')
+vmap <expr> l   DVB_Drag('right')
+vmap <expr> j   DVB_Drag('down')
+vmap <expr> k   DVB_Drag('up')
+
+" vundle plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim' "vundle itself
@@ -12,6 +21,7 @@ Plugin 'Valloric/YouCompleteMe' "autocomplete
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" heavy tmux integration
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -20,7 +30,7 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-" most important stuff here
+" the absolute most important stuff is here
 set background=dark
 filetype plugin on
 set autoindent
