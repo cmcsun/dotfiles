@@ -4,15 +4,11 @@ fortune | sed -e 's/america/amareica/g' -e 's/America/Amareica/g' -e 's/anybody/
 wego
 alias vim='mvim -v'
 alias la='ls -la'           #  Show hidden files.
-echo -e "${BCyan}This is BASH ${BRed}${BASH_VERSION%.*}${BCyan}\
-    - DISPLAY on ${BRed}$DISPLAY${NC}\n"
-date
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 # -> Prevents accidentally clobbering files.
 alias mkdir='mkdir -p'
-
 alias h='history'
 alias j='jobs -l'
 alias which='type -a'
