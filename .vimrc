@@ -99,14 +99,6 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
     highlight ColorColumn ctermbg=magenta
     call matchadd('ColorColumn', '\%81v', 100)
 
-
-" Highlight matches when jumping to next
-
-    " This rewires n and N to do the highlighing...
-    nnoremap <silent> n   n:call HLNext(0.4)<cr>
-    nnoremap <silent> N   N:call HLNext(0.4)<cr>
-
-
 " Make tabs, trailing whitespace, and non-breaking spaces visible
 
     exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
