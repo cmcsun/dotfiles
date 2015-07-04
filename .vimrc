@@ -48,7 +48,7 @@ else
 endif
 
 " the absolute most important stuff is here
-set background=dark
+colo detailed
 filetype plugin on
 set autoindent
 set cindent
