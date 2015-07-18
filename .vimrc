@@ -4,8 +4,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required 
 
-" non-vundle plugins in .vim/plugins; this is seriously the best thing ever
-" squee
 runtime plugin/dragvisuals.vim
 vmap <expr> h   DVB_Drag('left')
 vmap <expr> l   DVB_Drag('right')
