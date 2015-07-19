@@ -148,6 +148,7 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 filetype plugin on
 au FileType c setl ofu=ccomplete#CompleteCpp
+let g:ycm_confirm_extra_conf = 0
 
 " python
 filetype indent plugin on
