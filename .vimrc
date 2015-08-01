@@ -45,6 +45,13 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
+" dont hide whitespace from our python plugin
+let g:pymode_trim_whitespaces = 0
+let g:pymode_motion = 0
+let g:pymode_options_max_line_length = 79
+let g:pymode_options_colorcolumn = 1
+let g:pymode_folding = 0
+
 " the absolute most important stuff is here
 colo detailed
 filetype plugin on
