@@ -11,7 +11,7 @@ myLayoutHook = noBorders Full
 
 main = xmonad defaultConfig
     {
-        terminal = "terminator",
+        terminal = "sakura",
         layoutHook = myLayoutHook
     }
 desktop _ = desktopConfig
