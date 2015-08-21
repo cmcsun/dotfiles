@@ -53,7 +53,6 @@ let g:pymode_options_colorcolumn = 1
 let g:pymode_folding = 0
 
 " the absolute most important stuff is here
-colo detailed
 filetype plugin on
 set autoindent
 set cindent
