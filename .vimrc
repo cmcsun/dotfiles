@@ -1,5 +1,4 @@
 " My .vimrc
-
 " mad important stuff that vundle needs  
 set nocompatible              " be iMproved, required
 filetype off                  " required 
@@ -16,7 +15,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim' "vundle itself
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'FredKSchott/CoVim'
 Plugin 'Valloric/YouCompleteMe' "autocomplete
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -131,15 +129,6 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
     nnoremap  ;  :
 
 
-" block mode is more useful than visual mode
-
-    nnoremap    v   <C-V>
-    nnoremap <C-V>     v
-
-    vnoremap    v   <C-V>
-    vnoremap <C-V>     v
-
-
 " Always turn on syntax highlighting for diffs
 " this is neat for a few different reasons
     " EITHER select by the file-suffix directly...
@@ -158,4 +147,5 @@ let g:ycm_confirm_extra_conf = 0
 
 " python
 filetype indent plugin on
-
+colorscheme molokai
+let g:molokai_original = 1
