@@ -15,9 +15,15 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim' "vundle itself
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'racer-rust/vim-racer'
 Plugin 'Valloric/YouCompleteMe' "autocomplete
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+set hidden
+let g:racer_cmd = "/home/raina/prog/ruststuff/racer/target/release/racer"
+" let $RUST_SRC_PATH="<path-to-rust-srcdir>/src/"
+
 
 " syntastic
 set statusline+=%#warningmsg#
