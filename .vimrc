@@ -151,7 +151,7 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 filetype plugin on
 au FileType c setl ofu=ccomplete#CompleteCpp
-let g:ycm_confirm_extra_conf = 0
+let g:ycm_confirm_extra_conf = /home/methos/.vim/.ycm_extra_conf.py
 
 " python
 filetype indent plugin on
