@@ -2,7 +2,7 @@
 " mad important stuff that vundle needs  
 set nocompatible              " be iMproved, required
 filetype off                  " required 
-
+let g:molokai_original = 1
 runtime plugin/dragvisuals.vim
 vmap <expr> h   DVB_Drag('left')
 vmap <expr> l   DVB_Drag('right')
@@ -12,18 +12,23 @@ vmap <expr> k   DVB_Drag('up')
 " vundle plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'rust-lang/rust.vim'
 Plugin 'gmarik/Vundle.vim' "vundle itself
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'racer-rust/vim-racer'
+Plugin 'FredKSchott/CoVim'
+Plugin 'jceb/vim-orgmode'
 Plugin 'Valloric/YouCompleteMe' "autocomplete
+Plugin 'racer-rust/vim-racer'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-set hidden
-let g:racer_cmd = "/home/raina/prog/ruststuff/racer/target/release/racer"
-" let $RUST_SRC_PATH="<path-to-rust-srcdir>/src/"
+" In this example, the rust source code zip has been extracted to
+" /usr/local/rust/rustc-1.5.0
+"let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.11.0/src'
 
+let mapleader = ","
+let maplocalleader = "m"
 
 " syntastic
 set statusline+=%#warningmsg#
@@ -90,9 +95,6 @@ highlight LineNr ctermbg=0 ctermfg=5
 nmap <silent> <F4> :set invnumber<CR>
 imap <silent> <F4> <ESC>:set invnumber<CR>i
 
-" allow file saving as root when I forgot to start vim using sudo
-cmap w!! w !sudo tee > /dev/null %
-
 " crappy hex editor
 nmap <silent> <F8> :call Edithex()<CR>
 nmap <silent> <F9> :set nobinary<CR>:set eol<CR>
@@ -153,5 +155,4 @@ let g:ycm_confirm_extra_conf = 0
 
 " python
 filetype indent plugin on
-colorscheme molokai
-let g:molokai_original = 1
+
