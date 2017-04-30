@@ -9,6 +9,12 @@ vmap <expr> l   DVB_Drag('right')
 vmap <expr> j   DVB_Drag('down')
 vmap <expr> k   DVB_Drag('up')
 
+" vimplug
+call plug#begin('~/.vim/plugged')
+Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+call plug#end()
+
 " vundle plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -16,7 +22,6 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'gmarik/Vundle.vim' "vundle itself
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'FredKSchott/CoVim'
 Plugin 'jceb/vim-orgmode'
 Plugin 'Valloric/YouCompleteMe' "autocomplete
 Plugin 'racer-rust/vim-racer'
@@ -151,7 +156,7 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 filetype plugin on
 au FileType c setl ofu=ccomplete#CompleteCpp
-let g:ycm_confirm_extra_conf = /home/methos/.vim/.ycm_extra_conf.py
+let g:ycm_confirm_extra_conf = '/home/methos/.vim/.ycm_extra_conf.py'
 
 " python
 filetype indent plugin on
