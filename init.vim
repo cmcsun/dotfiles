@@ -38,11 +38,6 @@ let maplocalleader = "m"
 let g:deoplete#sources#rust#racer_binary='/Users/raina/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/Users/raina/rust/src/'
 
-" nerd tree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-map <C-n> :NERDTreeToggle<CR>
-
 " heavy tmux integration
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
