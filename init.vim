@@ -1,8 +1,8 @@
 " My .vimrc
-" mad important stuff that vundle needs  
 set nocompatible              " be iMproved, required
 filetype off                  " required 
-let g:molokai_original = 1
+
+" to do: re-add dragvisuals.vim and edit the configuration in this part!~:
 runtime plugin/dragvisuals.vim
 vmap <expr> h   DVB_Drag('left')
 vmap <expr> l   DVB_Drag('right')
@@ -21,6 +21,7 @@ Plug 'kassio/neoterm'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sebastianmarkow/deoplete-rust'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+"#Plug '
 
 call plug#end()
 
@@ -33,10 +34,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let mapleader = ","
 let maplocalleader = "m"
 
-"racer
-
-let g:deoplete#sources#rust#racer_binary='/Users/raina/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/Users/raina/rust/src/'
+"let g:deoplete#sources#go#gocode_binary
 
 " heavy tmux integration
 if exists('$TMUX')
@@ -121,14 +119,13 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " Make tabs, trailing whitespace, and non-breaking spaces visible
 
-    exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
-    set list
+"#exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+ "   set list
 
 
 " make ; and : do the same thing
 
     nnoremap  ;  :
-
 
 " Always turn on syntax highlighting for diffs
 " this is neat for a few different reasons
@@ -148,4 +145,28 @@ let g:ycm_confirm_extra_conf = '/home/methos/.vim/.ycm_extra_conf.py'
 
 " python
 filetype indent plugin on
+
+
+" when to activate neomake
+call neomake#configure#automake('nrw', 50)
+
+" which linter to enable for Python source file linting
+let g:neomake_python_enabled_makers = ['pylint']
+
+let g:neomake_python_pylint_maker = {
+  \ 'args': [
+  \ '-d', 'C0103, C0111',
+  \ '-f', 'text',
+  \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
+  \ '-r', 'n'
+  \ ],
+  \ 'errorformat':
+  \ '%A%f:%l:%c:%t: %m,' .
+  \ '%A%f:%l: %m,' .
+  \ '%A%f:(%l): %m,' .
+  \ '%-Z%p^%.%#,' .
+  \ '%-G%.%#',
+  \ }
+
+let g:neomake_python_enabled_makers = ['flake8', 'pylint']
 
