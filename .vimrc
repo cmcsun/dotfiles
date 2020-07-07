@@ -1,3 +1,5 @@
+"NO LONGER USED: SWITCHED TO NEOVIM :D
+
 " My .vimrc
 " mad important stuff that vundle needs  
 set nocompatible              " be iMproved, required
