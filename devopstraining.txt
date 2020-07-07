@@ -1,0 +1,46 @@
+do entire process in ansible
+
+use vagrant to provision 2 multiple virtual machines. create virtual private connection between VMs and test with rsync
+
+configure docker and docker local network and do the same with vagrant above^
+
+host dockerized services within virtual machines for ircd, teamspeak server, website, database, bybit trading bot that spams 1 dollar orders, and who-is app!
+
+reverse proxy the shit for site
+
+for the website/application layer use jenkins pipeline to continiously integrate git and deploy automatically every x minutes
+
+Install Nagios on Virtual Machines
+
+write a python script to take system level logs from vagrant VMs and email them to hayabusaninja@cocaine.ninja every 24 hours (use cronjobs)
+
+or nagios output somewhere? idk
+
+create a python script. in the python script invoke some OS commands, use tuples, dicts, hashmaps, and send an email in python within a function
+
+make a cron job to run the script to do the things every x minutes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
