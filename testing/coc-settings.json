@@ -1,0 +1,21 @@
+"languageserver": {
+
+  "golang": {
+
+    "command": "/home/cmc/go/src/golang.org/x/tools/gopls/gopls",
+
+    "filetypes": ["go"],
+
+    "initializationOptions": {
+
+      "gocodeCompletionEnabled": true,
+
+      "diagnosticsEnabled": true,
+
+      "lintTool": "golint"
+
+    }
+
+  }
+
+}
