@@ -35,7 +35,7 @@ let mapleader = ","
 let maplocalleader = "m"
 
 "let g:deoplete#sources#go#gocode_binary
-
+let g:deoplete#sources#go#gocode_binary = '/home/cmc/goprojects/gocode'
 " heavy tmux integration
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
