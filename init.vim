@@ -21,6 +21,7 @@ Plug 'kassio/neoterm'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sebastianmarkow/deoplete-rust'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'sebastianmarkow/deoplete-rust'
 "#Plug '
 
 call plug#end()
