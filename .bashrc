@@ -31,6 +31,8 @@ if [ -z ${DISPLAY:=""} ]; then
 fi
 export DISPLAY
 alias debug="set -o nounset; set -o xtrace"
+alias lvim="nvim -u ~/.config/nvim/init.lua"
+
 ulimit -S -c 0      # Don't want coredumps.
 set -o notify
 set -o noclobber
@@ -920,9 +922,14 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # mode:shell-script
 # sh-shell:bash
 # End:
+export PATH="$PATH:/home/deck/.local/bin"
+
+
+
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/raina/google_cloud/google-cloud-sdk/path.bash.inc' ]; then . '/home/raina/google_cloud/google-cloud-sdk/path.bash.inc'; fi
-
+source /usr/share/nvm/init-nvm.sh
 # The next line enables shell command completion for gcloud.
+
 if [ -f '/home/raina/google_cloud/google-cloud-sdk/completion.bash.inc' ]; then . '/home/raina/google_cloud/google-cloud-sdk/completion.bash.inc'; fi

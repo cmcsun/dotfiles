@@ -2,41 +2,133 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required 
 
+
 " to do: re-add dragvisuals.vim and edit the configuration in this part!~:
 runtime plugin/dragvisuals.vim
 vmap <expr> h   DVB_Drag('left')
 vmap <expr> l   DVB_Drag('right')
 vmap <expr> j   DVB_Drag('down')
 vmap <expr> k   DVB_Drag('up')
-
-" Install VimPlug -- curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+set rtp+=/home/deck/.config/nvim/bundle/Vundle.vim
+call vundle#begin("~/.config/nvim/bundle")
+Plugin 'VundleVim/Vundle.vim'  " required
+Plugin 'ycm-core/YouCompleteMe'
+call vundle#end()            " required
+filetype plugin indent on    " required
 " vimplug
 call plug#begin('~/.vim/plugged')
-Plug 'fatih/vim-go', { 'tag': '*' }
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.nvim/plugged/gocode/vim/symlink.sh' }
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-Plug 'neomake/neomake'
-Plug 'kassio/neoterm'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'sebastianmarkow/deoplete-rust'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'sebastianmarkow/deoplete-rust'
-"#Plug '
+Plug 'prabirshrestha/vim-lsp'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'cuducos/yaml.nvim'
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 
+" For luasnip users.
+" Plug 'L3MON4D3/LuaSnip'
+" Plug 'saadparwaiz1/cmp_luasnip'
+
+" For ultisnips users.
+" Plug 'SirVer/ultisnips'
+" Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+
+" For snippy users.
+" Plug 'dcampos/nvim-snippy'
+" Plug 'dcampos/cmp-snippy'
 call plug#end()
+" May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
+" utf-8 byte sequence
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
 
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+set encoding=utf-8
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+" delays and poor user experience
+set updatetime=300
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved
+set signcolumn=yes
+
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+
+if executable('pylsp')
+    " pip install python-lsp-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pylsp',
+        \ 'cmd': {server_info->['pylsp']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let $CACHE = expand('~/.cache')
+if !($CACHE->isdirectory())
+  call mkdir($CACHE, 'p')
+endif
+if &runtimepath !~# '/dein.vim'
+  let s:dir = 'dein.vim'->fnamemodify(':p')
+  if !(s:dir->isdirectory())
+    let s:dir = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
+    if !(s:dir->isdirectory())
+      execute '!git clone https://github.com/Shougo/dein.vim' s:dir
+    endif
+  endif
+  execute 'set runtimepath^='
+        \ .. s:dir->fnamemodify(':p')->substitute('[/\\]$', '', '')
+endif
 
 let mapleader = ","
 let maplocalleader = "m"
 
-"let g:deoplete#sources#go#gocode_binary
-let g:deoplete#sources#go#gocode_binary = '/home/cmc/goprojects/gocode'
 " heavy tmux integration
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -59,23 +151,14 @@ set autoindent
 set cindent
 set clipboard=unnamed       " use system clipboard
 set pastetoggle=<F2>        " paste mode
-set expandtab
-set smarttab
-set tabstop=4
 set incsearch
 set hlsearch
 set ignorecase smartcase    " make searches case-sensitive only if they got a cap in them
 set shiftwidth=4
-set softtabstop=4
 set bs=2
 set encoding=utf8
 set ffs=unix,dos,mac
 set mouse=a
-
-" wip
-map <F5> :make
-map <F6> :copen
-map <F7> :cclose
 
 " must haves
 set ignorecase
@@ -102,14 +185,6 @@ function Edithex()
         let $hex_input = 1
     endif
 endfunction
-
-" Tabs
-nnoremap <C-t> :tabnew<CR>
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
-
 " Make 81st colum stand out for if line is too long (usually never see this
 " cuz i split screen a lot with tmux but if i was coding full screen this will
 " show up sometimes
@@ -118,10 +193,6 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
     highlight ColorColumn ctermbg=magenta
     call matchadd('ColorColumn', '\%81v', 100)
 
-" Make tabs, trailing whitespace, and non-breaking spaces visible
-
-"#exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
- "   set list
 
 
 " make ; and : do the same thing
@@ -149,10 +220,10 @@ filetype indent plugin on
 
 
 " when to activate neomake
-call neomake#configure#automake('nrw', 50)
+"call neomake#configure#automake('nrw', 50)
 
 " which linter to enable for Python source file linting
-let g:neomake_python_enabled_makers = ['pylint']
+"let g:neomake_python_enabled_makers = ['pylint']
 
 let g:neomake_python_pylint_maker = {
   \ 'args': [
@@ -169,5 +240,5 @@ let g:neomake_python_pylint_maker = {
   \ '%-G%.%#',
   \ }
 
-let g:neomake_python_enabled_makers = ['flake8', 'pylint']
-
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
