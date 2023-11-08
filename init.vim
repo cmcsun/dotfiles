@@ -28,6 +28,8 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nfrid/treesitter-utils'
+Plug 'nfrid/markdown-togglecheck'
 Plug 'cuducos/yaml.nvim'
 " For vsnip users.
 Plug 'hrsh7th/cmp-vsnip'
@@ -239,6 +241,5 @@ let g:neomake_python_pylint_maker = {
   \ '%-Z%p^%.%#,' .
   \ '%-G%.%#',
   \ }
-
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
