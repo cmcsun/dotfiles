@@ -9,15 +9,19 @@ vmap <expr> h   DVB_Drag('left')
 vmap <expr> l   DVB_Drag('right')
 vmap <expr> j   DVB_Drag('down')
 vmap <expr> k   DVB_Drag('up')
-set rtp+=/home/cmc/.config/nvim/bundle/Vundle.vim
+set rtp+=/home/$USER/.config/nvim/bundle/Vundle.vim
 call vundle#begin("~/.config/nvim/bundle")
 Plugin 'VundleVim/Vundle.vim'  " required
 call vundle#end()            " required
 filetype plugin indent on    " required
 " vimplug
-call plug#begin('~/.vim/plugged')
-Plug 'prabirshrestha/vim-lsp'
+call plug#begin()
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'neovim/nvim-lspconfig'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
