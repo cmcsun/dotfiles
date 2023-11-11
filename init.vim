@@ -9,10 +9,9 @@ vmap <expr> h   DVB_Drag('left')
 vmap <expr> l   DVB_Drag('right')
 vmap <expr> j   DVB_Drag('down')
 vmap <expr> k   DVB_Drag('up')
-set rtp+=/home/deck/.config/nvim/bundle/Vundle.vim
+set rtp+=/home/cmc/.config/nvim/bundle/Vundle.vim
 call vundle#begin("~/.config/nvim/bundle")
 Plugin 'VundleVim/Vundle.vim'  " required
-Plugin 'ycm-core/YouCompleteMe'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " vimplug
