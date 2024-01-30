@@ -916,6 +916,7 @@ _killall()
 complete -F _killall killall killps
 
 alias dakota="echo woof woof woof woof woof woof woof woof! woof! *wags tail*"
+alias ozzy="echo woof woof woof woof woof woof woof woof! woof! *wags tail*"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -923,15 +924,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # mode:shell-script
 # sh-shell:bash
 # End:
-export PATH="$PATH:/home/deck/.local/bin"
+export PATH="$PATH:/home/$USER/.local/bin"
 export EDITOR='nvim'
 export VISUAL='nvim'
-
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/raina/google_cloud/google-cloud-sdk/path.bash.inc' ]; then . '/home/raina/google_cloud/google-cloud-sdk/path.bash.inc'; fi
-#source /usr/share/nvm/init-nvm.sh
-# The next line enables shell command completion for gcloud.
-
-if [ -f '/home/raina/google_cloud/google-cloud-sdk/completion.bash.inc' ]; then . '/home/raina/google_cloud/google-cloud-sdk/completion.bash.inc'; fi
